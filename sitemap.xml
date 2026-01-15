@@ -1,33 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
   <url>
     <loc>https://mijel.id/</loc>
-    <lastmod>2024-05-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mijel.id/#harga</loc>
-    <lastmod>2024-05-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://mijel.id/tentang-kami</loc>
+    <lastmod>2024-05-22</lastmod>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Service Specific (SEO Boost) -->
   <url>
-    <loc>https://mijel.id/#edukasi</loc>
-    <lastmod>2024-05-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://mijel.id/layanan/rumah-tangga</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mijel.id/layanan/mitra-bisnis</loc>
+    <lastmod>2024-05-22</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mijel.id/harga-minyak-jelantah</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Local SEO Pages -->
+  <url>
+    <loc>https://mijel.id/area/jakarta-barat</loc>
+    <lastmod>2024-05-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mijel.id/#siapa</loc>
-    <lastmod>2024-05-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://mijel.id/area/jakarta-selatan</loc>
+    <lastmod>2024-05-22</lastmod>
     <priority>0.7</priority>
   </url>
+  
+  <!-- Content -->
   <url>
-    <loc>https://mijel.id/#cara-kerja</loc>
-    <lastmod>2024-05-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://mijel.id/blog</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>
