@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Menghubungkan Google dan mesin pencari lain ke sitemap
+Sitemap: https://mijel.id/sitemap.xml

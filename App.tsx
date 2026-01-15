@@ -15,13 +15,12 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Update path gambar ke folder lokal ./images/
   const testimonials: Testimonial[] = [
     {
       name: "Ibu Sari Hartati",
       role: "Ibu Rumah Tangga",
       content: "Dulu bingung mau buang minyak jelantah kemana, takut nyumbat got. Sekarang malah jadi tambahan uang belanja dapur. Penjemputannya juga ramah banget!",
-      avatar: "./images/testi-sari.jpg" // Taruh file di folder images
+      avatar: "./images/testi-sari.jpg"
     },
     {
       name: "Pak Budi Santoso",
@@ -70,23 +69,63 @@ const App: React.FC = () => {
   const faqs: FAQItem[] = [
     {
       question: "Apakah ada minimal jumlah liter untuk penjemputan?",
-      answer: "Ya, untuk efisiensi penjemputan gratis, kami menetapkan minimal 5 liter untuk area Jakarta dan sekitarnya. Jika jumlahnya kurang, Anda bisa mengumpulkannya terlebih dahulu atau membawanya ke drop point terdekat kami."
+      answer: "Ya, untuk efisiensi penjemputan GRATIS, kami menetapkan minimal 5 liter untuk area Jakarta dan sekitarnya. Jika jumlahnya di bawah 5 liter, Anda disarankan untuk mengumpulkannya terlebih dahulu hingga mencapai batas minimal."
     },
     {
-      question: "Jenis minyak apa saja yang diterima?",
-      answer: "Kami menerima hampir semua jenis minyak jelantah bekas gorengan dari kelapa sawit, baik yang sudah keruh maupun yang masih relatif jernih. Namun, kami tidak menerima minyak pelumas mesin (oli) atau minyak yang sudah bercampur air/sabun."
+      question: "Berapa lama waktu penjemputan setelah konfirmasi?",
+      answer: "Kami menyediakan layanan Sameday Service untuk area Jakarta jika konfirmasi dilakukan sebelum jam 12.00 siang. Untuk area di luar Jakarta atau konfirmasi setelah jam 12.00, penjemputan dilakukan pada H+1."
     },
     {
-      question: "Bagaimana sistem pembayarannya?",
-      answer: "Pembayaran dilakukan secara instan setelah timbangan diverifikasi di tempat. Anda bisa memilih antara uang tunai (cash) atau transfer bank/e-wallet (Gopay/OVO/Dana)."
+      question: "Bagaimana cara pembayarannya?",
+      answer: "Pembayaran dilakukan secara instan di tempat setelah proses penimbangan selesai. Anda bisa memilih pembayaran tunai (cash) atau transfer bank/e-wallet (Gopay/OVO/Dana) saat kurir kami tiba."
     },
     {
-      question: "Minyak jelantahnya akan dijadikan apa?",
-      answer: "Kami berkomitmen pada ekonomi sirkular. Minyak jelantah yang Anda setor akan dikirim ke pabrik pengolahan biodiesel bersertifikat ISCC untuk diolah menjadi energi terbarukan."
+      question: "Apakah jerigennya dikembalikan?",
+      answer: "Untuk mitra rutin seperti restoran dan cafe, kami menggunakan sistem tukar jerigen. Kami akan membawa jerigen bersih sebagai pengganti jerigen penuh yang kami ambil agar operasional dapur Anda tidak terganggu."
+    },
+    {
+      question: "Jenis minyak jelantah seperti apa yang diterima?",
+      answer: "Kami menerima segala jenis minyak goreng bekas (jelantah) baik dari kelapa sawit, kelapa, maupun minyak sayur lainnya. Yang paling penting adalah minyak tidak bercampur dengan air, sabun, atau cairan kimia lainnya (seperti oli)."
+    },
+    {
+      question: "Bagaimana kalau minyak jelantah saya sudah sangat hitam?",
+      answer: "Tidak masalah. Tingkat kegelapan warna minyak tidak mempengaruhi penerimaan selama minyak tersebut murni bekas gorengan dan tidak mengandung endapan sisa makanan yang terlalu tebal."
+    },
+    {
+      question: "Apakah ada biaya penjemputan?",
+      answer: "Penjemputan sama sekali TIDAK dipungut biaya atau GRATIS selama memenuhi syarat minimal 5 liter. Anda justru akan mendapatkan uang tunai sesuai dengan harga berlaku."
+    },
+    {
+      question: "Minyak jelantah akan diolah jadi apa?",
+      answer: "Seluruh minyak jelantah yang kami kumpulkan akan dikirim ke pabrik pengolahan energi terbarukan bersertifikat ISCC untuk diubah menjadi Biodiesel, bukan dijernihkan kembali untuk dikonsumsi."
+    },
+    {
+      question: "Apakah bisa dijadwalkan penjemputan rutin?",
+      answer: "Sangat bisa! Layanan ini sangat populer bagi mitra restoran, hotel, dan katering. Anda bisa memilih jadwal rutin mingguan, dua mingguan, atau bulanan sesuai dengan kapasitas produksi limbah Anda."
+    },
+    {
+      question: "Area mana saja yang dilayani?",
+      answer: "Kami melayani seluruh wilayah DKI Jakarta (Pusat, Barat, Timur, Utara, Selatan) serta wilayah penyangga seperti Tangerang Kota, Bintaro, Ciledug, dan sekitarnya."
     }
   ];
 
   const handleWA = () => window.open('https://wa.me/6281919051690', '_blank');
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -100,11 +139,11 @@ const App: React.FC = () => {
             <span className="text-2xl font-black text-slate-800 tracking-tighter">Mijel<span className="text-emerald-600">.id</span></span>
           </div>
           
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#harga" className="text-slate-600 hover:text-emerald-600 font-bold transition">Harga</a>
-            <a href="#edukasi" className="text-slate-600 hover:text-emerald-600 font-bold transition">Edukasi</a>
-            <a href="#siapa" className="text-slate-600 hover:text-emerald-600 font-bold transition">Kemitraan</a>
-            <a href="#faq" className="text-slate-600 hover:text-emerald-600 font-bold transition">FAQ</a>
+          <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider">
+            <button onClick={() => scrollTo('harga')} className="text-slate-600 hover:text-emerald-600 transition">Harga</button>
+            <button onClick={() => scrollTo('edukasi')} className="text-slate-600 hover:text-emerald-600 transition">Edukasi</button>
+            <button onClick={() => scrollTo('siapa')} className="text-slate-600 hover:text-emerald-600 transition">Kemitraan</button>
+            <button onClick={() => scrollTo('faq')} className="text-slate-600 hover:text-emerald-600 transition">FAQ</button>
           </div>
 
           <div className="flex items-center gap-4">
@@ -122,20 +161,20 @@ const App: React.FC = () => {
       {/* Hero Section */}
       <header className="pt-32 pb-20 md:pt-48 md:pb-32 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-50 via-white to-white overflow-hidden">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative z-10">
+          <div className="relative z-10 text-center md:text-left">
             <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-xs font-bold mb-6">
               <i className="fas fa-bolt text-xs"></i>
               Harga Tertinggi di Jakarta & Sekitarnya
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
               Ubah Minyak Jelantah Menjadi <span className="gradient-text">Cuan Hari Ini!</span>
             </h1>
-            <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
+            <p className="text-lg text-slate-600 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
               Platform #1 di Jakarta untuk jual minyak jelantah. Harga transparan hingga <span className="font-bold text-slate-800">Rp 7.500/liter</span>. Tidak perlu menunggu berhari-hari, armada kami siap jemput <span className="underline decoration-emerald-400 decoration-4">Sameday</span>.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <button 
-                onClick={() => document.getElementById('harga')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollTo('harga')}
                 className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold transition text-lg shadow-xl shadow-slate-200"
               >
                 Cek Pendapatan
@@ -149,8 +188,8 @@ const App: React.FC = () => {
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-emerald-400 opacity-10 rounded-full blur-3xl"></div>
             <div className="relative bg-white p-4 rounded-[2.5rem] shadow-2xl border border-slate-100 transform md:rotate-2 hover:rotate-0 transition duration-500">
               <img 
-                src="./images/hero-jelantah.jpg" // Taruh gambar hero Anda di folder images
-                alt="Used Cooking Oil Collection" 
+                src="./images/hero-jelantah.jpg" 
+                alt="Jual Minyak Jelantah Jakarta - Layanan Jemput Sameday Mijel.id" 
                 className="rounded-[2rem] w-full object-cover aspect-square mb-4 shadow-inner"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 animate-bounce-slow">
@@ -170,43 +209,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </header>
-
-      {/* Trust Badges */}
-      <section className="py-12 border-y border-slate-100 bg-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <p className="text-center text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Dipercaya oleh Mitra Pengolah Biodiesel & Komunitas Hijau</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            <div className="flex items-center gap-2 font-black text-lg text-slate-700"><i className="fas fa-check-circle text-emerald-600"></i> ISCC CERTIFIED</div>
-            <div className="flex items-center gap-2 font-black text-lg text-slate-700"><i className="fas fa-flask text-emerald-600"></i> BIODIESEL PARTNER</div>
-            <div className="flex items-center gap-2 font-black text-lg text-slate-700"><i className="fas fa-seedling text-emerald-600"></i> ECO GREEN ID</div>
-            <div className="flex items-center gap-2 font-black text-lg text-slate-700"><i className="fas fa-recycle text-emerald-600"></i> ZERO WASTE</div>
-            <div className="flex items-center gap-2 font-black text-lg text-slate-700"><i className="fas fa-globe-asia text-emerald-600"></i> BUMI BERSIH</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Signals / Statistics Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {[
-              { icon: 'fa-droplet', value: '150.000L', label: 'Minyak Terkumpul', desc: 'Mencegah pencemaran air skala besar di Jakarta.' },
-              { icon: 'fa-users', value: '2.500+', label: 'Mitra Aktif', desc: 'Rumah tangga & restoran yang rutin menyetor.' },
-              { icon: 'fa-money-bill-trend-up', value: 'Rp 150JT+', label: 'Cuan Disalurkan', desc: 'Total pendapatan yang diterima mitra kami.' },
-              { icon: 'fa-recycle', value: '100%', label: 'Terdaur Ulang', desc: 'Seluruh minyak diolah menjadi biodiesel resmi.' },
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center text-center group">
-                <div className="w-20 h-20 bg-emerald-50 rounded-3xl flex items-center justify-center text-emerald-600 text-3xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-sm">
-                  <i className={`fas ${stat.icon}`}></i>
-                </div>
-                <h3 className="text-4xl font-black text-slate-900 mb-2">{stat.value}</h3>
-                <p className="font-bold text-slate-800 mb-2 tracking-tight">{stat.label}</p>
-                <p className="text-slate-500 text-sm max-w-[200px] leading-relaxed">{stat.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Pricing Tiers Section */}
       <section id="harga" className="py-24 bg-slate-50 border-t border-slate-100">
@@ -237,78 +239,18 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className="mt-16 text-center">
-             <button onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })} className="text-slate-900 font-black flex items-center gap-3 mx-auto hover:text-emerald-600 transition group">
-                Buka Kalkulator Pendapatan <i className="fas fa-chevron-down text-xs group-hover:translate-y-1 transition-transform"></i>
-             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Advantages Section: Keuntungan Jual di Kami */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Kenapa Harus Mijel.id?</h2>
-            <p className="text-slate-500 text-lg max-w-2xl mx-auto">Kami memberikan solusi limbah minyak yang paling transparan, menguntungkan, dan berdampak nyata.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { 
-                icon: 'fa-leaf', 
-                color: 'bg-emerald-50 text-emerald-600', 
-                title: 'Dampak Lingkungan Nyata', 
-                desc: 'Minyak jelantah Anda didaur ulang menjadi biodiesel, mencegah polusi air hingga 1 juta liter per liter minyak.' 
-              },
-              { 
-                icon: 'fa-hand-holding-dollar', 
-                color: 'bg-amber-50 text-amber-600', 
-                title: 'Penghasilan Maksimal', 
-                desc: 'Dapatkan harga tertinggi di pasar Jakarta. Transparan tanpa potongan biaya admin atau penjemputan.' 
-              },
-              { 
-                icon: 'fa-truck-fast', 
-                color: 'bg-blue-50 text-blue-600', 
-                title: 'Penjemputan Sameday', 
-                desc: 'Khusus Jakarta, kami siap menjemput di hari yang sama. Praktis tanpa perlu menunggu lama.' 
-              },
-              { 
-                icon: 'fa-shield-check', 
-                color: 'bg-indigo-50 text-indigo-600', 
-                title: 'Terpercaya & Berizin', 
-                desc: 'Memiliki izin lengkap pengangkutan limbah B3. Aman untuk kepatuhan regulasi restoran & hotel.' 
-              },
-              { 
-                icon: 'fa-scale-balanced', 
-                color: 'bg-rose-50 text-rose-600', 
-                title: 'Timbangan Akurat', 
-                desc: 'Menggunakan timbangan digital terkalibrasi. Hasil timbang bisa dilihat langsung di tempat.' 
-              },
-              { 
-                icon: 'fa-user-tie', 
-                color: 'bg-teal-50 text-teal-600', 
-                title: 'Pelayanan Ramah', 
-                desc: 'Kurir profesional, berseragam, dan terlatih menjaga kebersihan dapur Anda saat penjemputan.' 
-              },
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 flex flex-col group">
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform ${item.color}`}>
-                  <i className={`fas ${item.icon}`}></i>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{item.desc}</p>
-              </div>
-            ))}
+          
+          <div className="mt-16">
+            <ImpactCalculator />
           </div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section id="edukasi" className="py-24 bg-slate-50">
+      <section id="edukasi" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">Pelajari Tentang Jelantah</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Pelajari Tentang Jelantah</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">Mari bersama-sama menjaga ekosistem Jakarta dengan memahami cara pengelolaan minyak bekas yang benar.</p>
           </div>
 
@@ -333,7 +275,7 @@ const App: React.FC = () => {
                 desc: 'Gunakan jerigen tertutup, saring sisa makanan agar tidak membusuk, dan simpan di tempat yang tidak terkena matahari langsung.' 
               },
             ].map((edu, i) => (
-              <div key={i} className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-500">
+              <div key={i} className="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-500">
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-8 ${edu.color}`}>
                   <i className={`fas ${edu.icon}`}></i>
                 </div>
@@ -372,8 +314,8 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="w-full lg:w-1/3 bg-white/10 p-8 rounded-[2rem] border border-white/20 backdrop-blur-sm">
-                <p className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-4">Butuh Jerigen?</p>
-                <p className="text-lg font-medium text-emerald-50 leading-relaxed mb-8">Kami menyediakan penukaran jerigen bersih setiap pengambilan untuk mitra restoran rutin.</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-4 text-center">Butuh Jerigen?</p>
+                <p className="text-lg font-medium text-emerald-50 leading-relaxed mb-8 text-center">Kami menyediakan penukaran jerigen bersih setiap pengambilan untuk mitra restoran rutin.</p>
                 <button onClick={handleWA} className="w-full bg-white text-emerald-900 font-black py-4 rounded-xl hover:bg-emerald-50 transition shadow-xl">
                   Ajukan Mitra Rutin
                 </button>
@@ -384,7 +326,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Segment Section */}
-      <section id="siapa" className="py-24 bg-white">
+      <section id="siapa" className="py-24 bg-slate-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="inline-block bg-emerald-50 px-4 py-1.5 rounded-full text-[10px] font-black text-emerald-700 uppercase tracking-widest mb-4 border border-emerald-100">Kemitraan Terbuka</span>
@@ -448,73 +390,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Impact Calculator (Component) */}
-      <div id="calculator">
-        <ImpactCalculator />
-      </div>
-
-      {/* How it Works Section */}
-      <section id="cara-kerja" className="py-24 bg-slate-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-             <span className="text-emerald-600 font-bold uppercase tracking-widest text-xs mb-4 inline-block">Proses Cepat</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-2 mb-6 tracking-tight">Cara Jual di Mijel.id</h2>
-            <p className="text-slate-600 text-lg leading-relaxed">Hanya butuh 4 langkah mudah untuk mengubah limbah menjadi uang tunai di hari yang sama.</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            <div className="hidden lg:block absolute top-[60px] left-0 w-full h-[2px] bg-emerald-200 -z-0"></div>
-            {[
-              { icon: 'fa-bottle-droplet', step: '01', title: 'Kumpulkan', desc: 'Saring minyak jelantah dan masukkan ke jerigen/wadah bersih.' },
-              { icon: 'fa-whatsapp', step: '02', title: 'Hubungi WA', desc: 'Klik tombol WA, kirim shareloc dan infokan jumlah liter.' },
-              { icon: 'fa-truck-ramp-box', step: '03', title: 'Kurir Datang', desc: 'Tim kami akan menjemput dan menimbang digital di lokasi.' },
-              { icon: 'fa-money-bill-transfer', step: '04', title: 'Cair Instan', desc: 'Terima pembayaran cash atau transfer di tempat saat itu juga.' },
-            ].map((s, i) => (
-              <div key={i} className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 z-10 flex flex-col items-center text-center hover:shadow-xl transition-all duration-500 group">
-                <div className="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black text-xs mb-8 shadow-lg border-4 border-white transform group-hover:scale-110 transition duration-300">
-                  {s.step}
-                </div>
-                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-800 text-2xl mb-8 border border-slate-100 group-hover:bg-emerald-50 group-hover:text-emerald-600 transition duration-500">
-                  <i className={`fas ${s.icon}`}></i>
-                </div>
-                <h3 className="text-xl font-black mb-4 tracking-tight text-slate-800">{s.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-black mb-6 tracking-tight">Cerita Mitra Mijel</h2>
-            <p className="text-slate-500 text-lg">Ribuan warga Jakarta telah bergabung menciptakan lingkungan yang lebih bersih.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-slate-50 p-12 rounded-[2.5rem] flex flex-col h-full border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
-                <div className="flex text-amber-400 gap-1 mb-8">
-                  {[...Array(5)].map((_, idx) => <i key={idx} className="fas fa-star text-sm"></i>)}
-                </div>
-                <p className="text-slate-700 italic text-lg leading-relaxed mb-10 flex-grow">"{t.content}"</p>
-                <div className="flex items-center gap-5">
-                  <img src={t.avatar} className="w-14 h-14 rounded-2xl object-cover shadow-sm" alt={t.name} />
-                  <div>
-                    <h4 className="font-black text-slate-900 leading-tight">{t.name}</h4>
-                    <p className="text-[10px] text-emerald-600 uppercase font-black tracking-widest mt-1">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="py-24 bg-slate-50">
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-black mb-6 tracking-tight">Sering Ditanyakan</h2>
@@ -523,19 +400,19 @@ const App: React.FC = () => {
 
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm transition-all duration-300">
+              <div key={i} className="bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden shadow-sm transition-all duration-300">
                 <button 
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-8 text-left hover:bg-slate-50 transition"
+                  className="w-full flex items-center justify-between p-8 text-left hover:bg-slate-100 transition"
                 >
                   <span className="font-black text-slate-800 pr-8 text-lg">{faq.question}</span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${activeFaq === i ? 'bg-emerald-600 text-white rotate-180' : 'bg-slate-100 text-slate-400'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${activeFaq === i ? 'bg-emerald-600 text-white rotate-180' : 'bg-slate-200 text-slate-400'}`}>
                     <i className="fas fa-chevron-down text-xs"></i>
                   </div>
                 </button>
                 {activeFaq === i && (
                   <div className="px-8 pb-8 text-slate-600 leading-relaxed animate-fade-in-down">
-                    <div className="pt-4 border-t border-slate-100">
+                    <div className="pt-4 border-t border-slate-200">
                       {faq.answer}
                     </div>
                   </div>
@@ -546,35 +423,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="bg-slate-900 rounded-[4rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_rgba(16,185,129,0.3),_transparent_70%)]"></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter">Minyak Jadi Cuan, <span className="text-emerald-500 underline">Jakarta Tetap Nyaman!</span></h2>
-              <p className="text-slate-400 text-xl mb-16 max-w-3xl mx-auto leading-relaxed">
-                Sudah lebih dari 2.500 mitra membuktikannya. Jangan biarkan limbah mengotori dapur Anda, hubungi kami sekarang juga.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button onClick={handleWA} className="bg-emerald-600 hover:bg-emerald-500 text-white px-12 py-6 rounded-[2rem] font-black text-2xl shadow-2xl transition transform hover:scale-105 active:scale-95 flex items-center justify-center gap-4">
-                  <i className="fab fa-whatsapp"></i> Chat Admin Sekarang
-                </button>
-              </div>
-              <p className="mt-12 text-slate-500 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-4">
-                <span className="w-8 h-[1px] bg-slate-800"></span>
-                Sameday Service Aktif (Senin - Sabtu)
-                <span className="w-8 h-[1px] bg-slate-800"></span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
+      {/* Footer / Visual Sitemap */}
       <footer className="bg-slate-950 pt-32 pb-12 text-slate-500 border-t border-white/5">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-16 pb-24 border-b border-white/5">
@@ -597,23 +446,26 @@ const App: React.FC = () => {
               </div>
             </div>
 
+            {/* Visual Sitemap Column 1 */}
             <div className="md:col-span-2">
-              <h4 className="text-white font-black mb-8 uppercase text-[10px] tracking-[0.2em]">Navigasi</h4>
+              <h4 className="text-white font-black mb-8 uppercase text-[10px] tracking-[0.2em]">Peta Situs</h4>
               <ul className="space-y-5 text-sm font-bold">
-                <li><a href="#" className="hover:text-emerald-400 transition">Beranda</a></li>
-                <li><a href="#harga" className="hover:text-emerald-400 transition">Cek Harga</a></li>
-                <li><a href="#edukasi" className="hover:text-emerald-400 transition">Edukasi</a></li>
-                <li><a href="#siapa" className="hover:text-emerald-400 transition">Kemitraan</a></li>
+                <li><button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="hover:text-emerald-400 transition">Beranda</button></li>
+                <li><button onClick={() => scrollTo('harga')} className="hover:text-emerald-400 transition">Cek Harga & Kalkulator</button></li>
+                <li><button onClick={() => scrollTo('edukasi')} className="hover:text-emerald-400 transition">Edukasi & Tips</button></li>
+                <li><button onClick={() => scrollTo('siapa')} className="hover:text-emerald-400 transition">Program Kemitraan</button></li>
+                <li><button onClick={() => scrollTo('faq')} className="hover:text-emerald-400 transition">Pusat Bantuan (FAQ)</button></li>
               </ul>
             </div>
 
+            {/* Visual Sitemap Column 2 */}
             <div className="md:col-span-2">
-              <h4 className="text-white font-black mb-8 uppercase text-[10px] tracking-[0.2em]">Layanan</h4>
+              <h4 className="text-white font-black mb-8 uppercase text-[10px] tracking-[0.2em]">Layanan Kami</h4>
               <ul className="space-y-5 text-sm font-bold">
-                <li><a href="#" className="hover:text-emerald-400 transition">Jemput Rumah</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition">Mitra Resto</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition">Beli Partai Besar</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition">Audit Limbah</a></li>
+                <li><button onClick={handleWA} className="hover:text-emerald-400 transition text-left">Jemput Rumah Tangga</button></li>
+                <li><button onClick={handleWA} className="hover:text-emerald-400 transition text-left">Limbah Resto & Cafe</button></li>
+                <li><button onClick={handleWA} className="hover:text-emerald-400 transition text-left">Beli Partai Besar</button></li>
+                <li><button onClick={handleWA} className="hover:text-emerald-400 transition text-left">Sertifikasi ISCC</button></li>
               </ul>
             </div>
 
@@ -639,8 +491,8 @@ const App: React.FC = () => {
           <div className="pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] gap-8">
             <p className="text-slate-700">© 2024 MIJEL.ID — ALL RIGHTS RESERVED.</p>
             <div className="flex items-center gap-12 text-slate-700">
-              <a href="#" className="hover:text-white transition">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition">Terms</a>
+              <a href="#" className="hover:text-white transition">Kebijakan Privasi</a>
+              <a href="#" className="hover:text-white transition">Syarat & Ketentuan</a>
             </div>
           </div>
         </div>
