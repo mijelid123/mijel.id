@@ -22,7 +22,7 @@ const App: React.FC = () => {
     {
       name: "Cafe Kopi Senja",
       role: "Mitra Restoran",
-      content: "Sangat profesional. Jadwal penjemputan rutin dan on-time. Sertifikat pengangkutannya juga jelas, jadi kami aman secara regulasi lingkungan.",
+      content: "Sangat profesional. Jadwal penjemputan rutin and on-time. Sertifikat pengangkutannya juga jelas, jadi kami aman secara regulasi lingkungan.",
       avatar: "https://picsum.photos/seed/cafe/100/100"
     }
   ];
@@ -83,6 +83,8 @@ const App: React.FC = () => {
     { label: 'Tentang Kami', href: '#tentang' },
   ];
 
+  const handleWA = () => window.open('https://wa.me/6281919051690', '_blank');
+
   return (
     <div className="min-h-screen">
       {/* Navigation */}
@@ -103,7 +105,7 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg shadow-emerald-200">
+          <button onClick={handleWA} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg shadow-emerald-200">
             Jemput Sekarang
           </button>
         </div>
@@ -130,7 +132,7 @@ const App: React.FC = () => {
               >
                 Cek Pendapatan
               </button>
-              <button className="bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 rounded-xl font-bold transition text-lg flex items-center justify-center gap-2">
+              <button onClick={handleWA} className="bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 rounded-xl font-bold transition text-lg flex items-center justify-center gap-2">
                 <i className="fab fa-whatsapp"></i> Hubungi Admin
               </button>
             </div>
@@ -289,7 +291,7 @@ const App: React.FC = () => {
               </div>
               <p className="text-lg font-bold"><span className="block text-3xl">500+</span> Mitra Resto di Jakarta</p>
             </div>
-            <button className="z-10 bg-white text-emerald-700 hover:bg-emerald-50 px-10 py-5 rounded-2xl font-black shadow-xl transition scale-110">
+            <button onClick={handleWA} className="z-10 bg-white text-emerald-700 hover:bg-emerald-50 px-10 py-5 rounded-2xl font-black shadow-xl transition scale-110">
               Hubungi Sales
             </button>
           </div>
@@ -412,7 +414,7 @@ const App: React.FC = () => {
                 <p className="text-slate-600 text-sm mb-6">
                   Hubungi sebelum jam 12 siang untuk penjemputan di hari yang sama khusus area Jakarta. Untuk Tangerang dan sekitarnya estimasi H+1.
                 </p>
-                <button className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition">
+                <button onClick={handleWA} className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition">
                   Cek Jadwal Hari Ini
                 </button>
               </div>
@@ -534,10 +536,10 @@ const App: React.FC = () => {
               Jangan tunggu sampai menumpuk. Hubungi kami sekarang, kami jemput gratis, dan uang langsung cair. Praktis, bukan?
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
-              <button className="bg-slate-900 hover:bg-slate-800 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-2xl transition transform hover:scale-105 flex items-center justify-center gap-3">
+              <button onClick={handleWA} className="bg-slate-900 hover:bg-slate-800 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-2xl transition transform hover:scale-105 flex items-center justify-center gap-3">
                 <i className="fab fa-whatsapp"></i> Chat WhatsApp
               </button>
-              <button className="bg-white text-emerald-700 hover:bg-emerald-50 px-12 py-5 rounded-2xl font-black text-xl shadow-2xl transition transform hover:scale-105">
+              <button onClick={() => document.getElementById('harga')?.scrollIntoView({ behavior: 'smooth' })} className="bg-white text-emerald-700 hover:bg-emerald-50 px-12 py-5 rounded-2xl font-black text-xl shadow-2xl transition transform hover:scale-105">
                 Cek Harga Hari Ini
               </button>
             </div>
@@ -601,7 +603,7 @@ const App: React.FC = () => {
               </li>
               <li className="flex items-start gap-4">
                 <i className="fab fa-whatsapp text-emerald-500 mt-1"></i>
-                <span>+62 812-3456-7890</span>
+                <span>0819-1905-1690</span>
               </li>
               <li className="flex items-start gap-4">
                 <i className="fas fa-envelope text-emerald-500 mt-1"></i>
@@ -622,7 +624,7 @@ const App: React.FC = () => {
 
       {/* WhatsApp Floating Button */}
       <a 
-        href="https://wa.me/6281234567890" 
+        href="https://wa.me/6281919051690" 
         target="_blank" 
         className="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition flex items-center justify-center gap-2 group"
       >

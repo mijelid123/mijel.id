@@ -53,7 +53,7 @@ const ImpactCalculator: React.FC = () => {
               </div>
               <p className="text-xs text-slate-400 italic">*Harga fix Rp 6.000/L. Sameday khusus Jakarta.</p>
               <button 
-                onClick={() => window.open('https://wa.me/6281234567890', '_blank')}
+                onClick={() => window.open('https://wa.me/6281919051690', '_blank')}
                 className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition shadow-lg flex items-center justify-center gap-2"
               >
                 <i className="fab fa-whatsapp"></i> Jemput Sameday Sekarang
