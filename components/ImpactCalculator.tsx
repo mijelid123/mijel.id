@@ -7,8 +7,15 @@ const ImpactCalculator: React.FC = () => {
   const [impactText, setImpactText] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   
-  const PRICE_PER_LITER = 6000;
-  const totalEarnings = liters * PRICE_PER_LITER;
+  const getPricePerLiter = (l: number) => {
+    if (l >= 500) return 7500;
+    if (l >= 200) return 7000;
+    if (l >= 100) return 6500;
+    return 6000;
+  };
+
+  const currentPrice = getPricePerLiter(liters);
+  const totalEarnings = liters * currentPrice;
 
   const fetchAnalysis = useCallback(async (val: number) => {
     setLoading(true);
@@ -28,8 +35,8 @@ const ImpactCalculator: React.FC = () => {
     <section id="harga" className="py-20 bg-white">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Cek Harga Jual Minyak Jelantah</h2>
-          <p className="text-slate-600">Harga saat ini <span className="font-bold text-emerald-600">Rp 6.000/liter</span>. Punya 1 Jerigen full (20L)? Bisa dapat Rp 120.000!</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Hitung Estimasi Pendapatan</h2>
+          <p className="text-slate-600">Masukkan jumlah liter di bawah ini untuk melihat total uang yang Anda terima.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -48,10 +55,14 @@ const ImpactCalculator: React.FC = () => {
             
             <div className="space-y-4">
               <div className="flex justify-between items-center py-2 border-b border-slate-200">
+                <span className="text-slate-500 font-medium">Harga per Liter (Tier)</span>
+                <span className="text-lg font-bold text-slate-800">Rp {currentPrice.toLocaleString('id-ID')}</span>
+              </div>
+              <div className="flex justify-between items-center py-2 border-b border-slate-200">
                 <span className="text-slate-500">Estimasi Pendapatan</span>
                 <span className="text-2xl font-bold text-emerald-600">Rp {totalEarnings.toLocaleString('id-ID')}</span>
               </div>
-              <p className="text-xs text-slate-400 italic">*Harga fix Rp 6.000/L. Sameday khusus Jakarta.</p>
+              <p className="text-xs text-slate-400 italic">*Harga menyesuaikan dengan jumlah liter. Sameday khusus Jakarta.</p>
               <button 
                 onClick={() => window.open('https://wa.me/6281919051690', '_blank')}
                 className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition shadow-lg flex items-center justify-center gap-2"
