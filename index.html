@@ -75,15 +75,38 @@
             "opens": "08:00",
             "closes": "17:00"
           },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "2500"
+          },
           "areaServed": ["Jakarta Barat", "Jakarta Selatan", "Jakarta Pusat", "Jakarta Utara", "Jakarta Timur", "Tangerang"]
         },
         {
-          "@type": "Service",
-          "serviceType": "Used Cooking Oil Collection",
-          "provider": { "@id": "https://mijel.id/#organization" },
-          "areaServed": { "@type": "City", "name": "Jakarta" },
-          "name": "Layanan Jemput Minyak Jelantah Sameday",
-          "description": "Pengumpulan minyak goreng bekas untuk diolah menjadi biodiesel ramah lingkungan."
+          "@type": "HowTo",
+          "name": "Cara Jual Minyak Jelantah di Mijel.id",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "text": "Kumpulkan minyak jelantah Anda ke dalam wadah tertutup dan saring sisa makanan.",
+              "name": "Kumpulkan & Saring"
+            },
+            {
+              "@type": "HowToStep",
+              "text": "Hubungi admin melalui WhatsApp untuk share lokasi dan jumlah liter.",
+              "name": "Hubungi Admin"
+            },
+            {
+              "@type": "HowToStep",
+              "text": "Kurir kami akan datang menjemput di hari yang sama (khusus Jakarta).",
+              "name": "Penjemputan Sameday"
+            },
+            {
+              "@type": "HowToStep",
+              "text": "Terima pembayaran tunai atau transfer setelah penimbangan digital di tempat.",
+              "name": "Terima Pembayaran"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -91,102 +114,18 @@
             {
               "@type": "Question",
               "name": "Berapa minimal minyak jelantah yang bisa dijemput?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Untuk efisiensi penjemputan GRATIS, kami menetapkan minimal 5 liter untuk area Jakarta dan sekitarnya."
-              }
+              "acceptedAnswer": { "@type": "Answer", "text": "Minimal 5 liter untuk area Jakarta dan sekitarnya." }
             },
             {
               "@type": "Question",
-              "name": "Berapa lama waktu penjemputan setelah konfirmasi?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Kami menyediakan layanan Sameday Service untuk area Jakarta jika konfirmasi dilakukan sebelum jam 12.00 siang. Selebihnya H+1."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bagaimana cara pembayarannya?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Pembayaran dilakukan instan di tempat (Cash atau Transfer Bank/e-Wallet) segera setelah timbangan selesai."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Apakah jerigennya dikembalikan?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Kami menggunakan sistem tukar jerigen bersih untuk mitra rutin restoran agar dapur tetap higienis."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Jenis minyak jelantah seperti apa yang diterima?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Kami menerima semua jenis minyak goreng bekas nabati (sawit, kelapa) yang tidak bercampur air, sabun, atau oli."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bagaimana kalau minyak jelantah saya sudah sangat hitam?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Warna hitam tidak masalah, selama itu adalah minyak murni bekas gorengan tanpa endapan sisa makanan yang berlebihan."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Apakah ada biaya penjemputan?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sama sekali tidak ada biaya. Penjemputan GRATIS dan Anda justru mendapatkan uang tunai."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Minyak jelantah akan diolah jadi apa?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Diolah menjadi Biodiesel bersertifikat ISCC sebagai energi terbarukan, bukan untuk dikonsumsi kembali."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Apakah bisa dijadwalkan penjemputan rutin?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Bisa, kami menyediakan jadwal rutin mingguan atau bulanan khusus untuk bisnis kuliner (Restoran/Hotel)."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Area mana saja yang dilayani?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Seluruh DKI Jakarta dan wilayah penyangga seperti Tangerang Kota, Bintaro, dan Ciledug."
-              }
+              "name": "Berapa lama waktu penjemputan?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Layanan Sameday tersedia jika konfirmasi sebelum jam 12 siang." }
             }
           ]
         }
       ]
     }
   </script>
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mijel.id/">
-  <meta property="og:title" content="Mijel.id | Jual Minyak Jelantah Jakarta - Harga Tertinggi Rp 7.500/L">
-  <meta property="og:description" content="Ubah minyak jelantah jadi uang tunai! Kami jemput langsung ke rumah atau restoran Anda di Jakarta dengan harga terbaik.">
-  <meta property="og:image" content="https://mijel.id/images/og-preview.jpg">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://mijel.id/">
-  <meta property="twitter:title" content="Mijel.id | Jual Minyak Jelantah Jakarta - Harga Tertinggi Rp 7.500/L">
-  <meta property="twitter:description" content="Layanan jemput minyak jelantah sameday di Jakarta. Transparan, timbangan digital, dan harga kompetitif.">
-  <meta property="twitter:image" content="https://mijel.id/images/og-preview.jpg">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -195,31 +134,23 @@
     body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
     .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .gradient-text { background: linear-gradient(135deg, #10b981 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    
-    @keyframes fade-in-down {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fade-in-down { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in-down { animation: fade-in-down 0.3s ease-out; }
-
-    @keyframes bounce-slow {
-      0%, 100% { transform: translateY(-5%); }
-      50% { transform: translateY(0); }
-    }
+    @keyframes bounce-slow { 0%, 100% { transform: translateY(-5%); } 50% { transform: translateY(0); } }
     .animate-bounce-slow { animation: bounce-slow 4s infinite ease-in-out; }
   </style>
   <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
-    "react": "https://esm.sh/react@^19.0.0",
-    "react-dom": "https://esm.sh/react-dom@^19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@^19.0.0/client",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+  {
+    "imports": {
+      "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+      "react": "https://esm.sh/react@^19.0.0",
+      "react-dom": "https://esm.sh/react-dom@^19.0.0",
+      "react-dom/client": "https://esm.sh/react-dom@^19.0.0/client",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+      "react/": "https://esm.sh/react@^19.2.3/"
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
   <div id="root"></div>
